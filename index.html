@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="back">
+        <div id="signupform">
+            <div id="account">
+                <h3>Account Details</h3>
+                <hr>
+            </div>
+            <div id="signupinput">
+                <label for="">Enter Your Email</label><br>
+                <input class="inputs" type="email" id="lemail" placeholder="Enter Your Email"><br>
+                <label for="">Enter Your Password</label><br>
+                <input class="inputs" type="password" id="lpassword" placeholder="Enter Your Password"><br>
+            </div>
+            <div class="signupbutton">
+                <input type="button" id="btnsignup" onclick="signup()" value="No Account">
+                <input type="button" id="login" value="Log In">
+            </div>
+        </div>
+    </div>
+
+    <div class="main-user">
+        <h2>User Profile</h2> <hr>
+        <div class="profile">
+            
+        </div>
+    </div>
+
+    <script>
+        function signup() {
+            window.location.href = ("signup.html")
+        }
+    </script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="app.js" type="module"></script>
+</body>
+
+</html>

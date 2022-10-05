@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="signupform2">
+        <div id="account">
+            <h3>Create An Account</h3>
+            <hr>
+        </div>
+        <div id="signupinput">
+            <label for="">Enter Your Full Name:</label><br>
+            <input class="inputs" type="text" id="fname" placeholder="Enter Your First Name" required="required"><br>
+            <label for="">Enter Your Father Name:</label><br>
+            <input class="inputs" type="text" id="lname" placeholder="Enter Your Father Name" required="required"><br>
+            <label for="">Enter Your Date of Birth:</label><br>
+            <input class="inputs" type="number" id="birth" placeholder="Enter Your Date of Birth" required="required"><br>
+            <label for="">Enter Your Email:</label><br>
+            <input class="inputs" type="email" id="email" placeholder="Enter Your Email" required="required"><br>
+            <label for="">Enter Your Password:</label><br>
+            <input class="inputs" type="password" id="password" placeholder="Enter Your Password"
+                required="required"><br>
+        </div>
+        <div class="signupbutton">
+            <input type="button" id="btnsignup1"  value="Sumbit">
+        </div>
+    </div>
+
+    <!-- <script>
+
+        function submit() {
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+
+            var firstNameregex = /^\s*$/.test(fname);
+            var lastNameregex = /^\s*$/.test(lname);
+            var emailRegex = /^([a-zA-Z0-9\._]+)@([a-zA-Z0-9])+.([a-z]+)(.[a-z]+)?$/.test(email);
+            var passwordRegex = /^(?=.*\d)(?=.*[a-zA-Z])[a-zA-Z0-9]{7,}$/.test(password);
+
+            if (firstNameregex === true) {
+                //   swal("Attention!", "Please Fill The LastName Input!", "error");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Attention!',
+                    text: 'Please Fill The FirstName Input',
+                    iconColor: 'red',
+                    background: 'black',
+                    color: 'whitesmoke',
+                });
+            }
+            else if (lastNameregex === true) {
+                // swal("Attention!", "Please Fill The LastName Input!", "error");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Attention!',
+                    text: 'Please Fill The LastName Input',
+                    iconColor: 'red',
+                    background: 'black',
+                    color: 'whitesmoke',
+                });
+            }
+            else if (passwordRegex === false) {
+                // swal("Attention!", "Please Enter Valid Password!", "error");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Attention!',
+                    text: 'Please Enter Valid Password!',
+                    iconColor: 'red',
+                    background: 'black',
+                    color: 'whitesmoke',
+                });
+            }
+            else if (emailRegex === false) {
+                // swal("Attention!", "Please Enter Valid Email!", "error");
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Attention!',
+                    text: 'Please Enter Valid Email!',
+                    iconColor: 'red',
+                    background: 'black',
+                    color: 'whitesmoke',
+                });
+            }
+            else if (firstNameregex === false && lastNameregex === false && emailRegex === true && passwordRegex === true) {
+                window.location.href = "index.html"
+            }
+
+            var fname = ""
+            var lname = ""
+            var email = ""
+            var password = ""
+        } -->
+    <!-- </script> -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="app.js" type="module"></script>
+</body>
+
+</html>
