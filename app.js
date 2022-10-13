@@ -10,6 +10,8 @@ import {
     getDoc,
     setDoc,
     getFirestore,
+    collection,
+    getDocs
 }
     from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -85,24 +87,18 @@ btn.addEventListener("click", function () {
         password.value = "";
         birth.value = "";
     }, 1500)
-    // ..
 })
 }
 var login = document.getElementById("login")
 var signupform = document.getElementById("signupform")
-// var profile = document.getElementById("profile")
-
-var profile = document.querySelector(".profile")
-var main = document.querySelector(".main-user")
-console.log (profile)
 
 if(login){
-login.addEventListener("click", function () {
-    var lemail = document.getElementById("lemail")
-    var lpassword = document.getElementById("lpassword")
-    signInWithEmailAndPassword(auth, lemail.value, lpassword.value)
-    .then(async (userCredential) => {
-        // Signed in 
+    login.addEventListener("click", function () {
+        var lemail = document.getElementById("lemail")
+        var lpassword = document.getElementById("lpassword")
+        signInWithEmailAndPassword(auth, lemail.value, lpassword.value)
+        .then(async (userCredential) => {
+            // Signed in 
         const user = userCredential.user;
         // ...
         console.log(user)
@@ -115,32 +111,28 @@ login.addEventListener("click", function () {
             color: 'whitesmoke',
         });
         
-        console.log(profile)
+        // console.log(profile)
         const docRef = doc(db, "users", user.uid);
-                    const docSnap = await getDoc(docRef);
-                    if (docSnap.exists()) {
-                        let profileLi =
-                            `<p id="first_name">Full Name</p>
-                            <li> ${docSnap.data().firstName} </li>
-                            <p>father Name</p>
-                            <li>${docSnap.data().fatherName} </li>
-                            <p>Date of Birth</p>
-                            <li>${docSnap.data().birth} </li>
-                            <p>Email</p>
-                            <li> ${docSnap.data().email} </li>
-                           `
-                        profile.innerHTML = profileLi
-                        console.log("Document data:", docSnap.data());
-                        console.log (profile)
-                        console.log (profileLi)
+        const docSnap = await getDoc(docRef);
+        var friend = []
+        if (docSnap.exists()) {
+                        const querySnapshot = await getDocs(collection(db, "users")) ;
+                        querySnapshot.forEach((doc) => {
+                          console.log(doc.id)
+                          let  alluserdata =  doc.data()
+                          friend.push(alluserdata.firstName)
+                          localStorage.setItem("friendsname",JSON.stringify(friend))
+                          console.log(friend)
+                        })
+                      localStorage.setItem("userdata", JSON.stringify(docSnap.data()))
+                        console.log (docSnap.data())
                     } else {
-                       // doc.data() will be undefined in this case
-                       console.log("No such document!");
+                        console.log("No such document!");
                     }
                     setTimeout(() => {
+                        window.location = ("chat.html")
                         // window.location = "user.html"
                         signupform.style.display = "none"
-                        main.style.display = "block"
                         lemail.value = ""
                         lpassword.value = ""
         }, 1000)
@@ -148,8 +140,8 @@ login.addEventListener("click", function () {
         .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-
-           Swal.fire({
+        
+        Swal.fire({
                  icon: 'error',
                  title: errorCode,
                  text: errorMessage,
@@ -157,14 +149,34 @@ login.addEventListener("click", function () {
                  background: 'black',
                  color: 'whitesmoke',
           });
-            setTimeout(() => {
-                lemail.value = ""
-                lpassword.value = ""
+          setTimeout(() => {
+              lemail.value = ""
+              lpassword.value = ""
             },1000)
         })
 });
 } 
+// var logout = document.getElementById("logout")
+// if(logout){
+//     logout.addEventListener("click",function () {
+//         onAuthStateChanged(auth, (user) => {
+//             if (!user) {
+//                 // User is signed in, see docs for a list of available properties
+//                 // https://firebase.google.com/docs/reference/js/firebase.User
+//                 const uid = user.uid;
+//                 // ...
+//                 window.location("signup.html")
+//         //   console.log (user)
+//         //   console.log (uid)
+//         } else {
+//           // User is signed out
+//           // ...
+//           console.log("User is signed out")
 
+//         }
+//       });
+// })
+// }
 
         // login.addEventListener("click", function () {
             //     var lemail = document.getElementById("lemail")

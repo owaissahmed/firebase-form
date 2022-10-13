@@ -90,7 +90,7 @@ body {
 }
 
 .signupbutton>input,
-.signupbutton>button {
+.signupbutton>button,#logout {
   background-color: rgb(51, 49, 49);
   color: white;
   width: 115px;
@@ -103,7 +103,7 @@ body {
 }
 
 .signupbutton>input:active,
-.signupbutton>button:active {
+.signupbutton>button:active,#logout {
   background-color: white;
   color: rgb(51, 49, 49);
   font-weight: bold;
